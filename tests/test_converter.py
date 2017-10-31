@@ -63,9 +63,9 @@ class TestConverter(unittest.TestCase):
             dt_jalali_d
         )
 
-        self.assertTrue(y.equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1346])))
-        self.assertTrue(m.equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1])))
-        self.assertTrue(d.equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1])))
+        self.assertTrue(pd.Series(y).equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1346])))
+        self.assertTrue(pd.Series(m).equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1])))
+        self.assertTrue(pd.Series(d).equals(pd.Series([np.NaN, np.NaN, np.NaN, np.NaN, np.NaN, 1])))
 
     def test_invalid_date_convertation(self):
         dt_jalali_y = pd.Series([np.NaN, 1346])

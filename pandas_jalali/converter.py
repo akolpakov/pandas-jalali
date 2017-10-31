@@ -67,11 +67,9 @@ def validate_jalali_date(year, month, day):
     valid_month = (month >= 1) & (month <= 12)
     valid_day = (day >= 1) & (day <= days_in_month)
 
-    year.loc[~(valid_year & valid_month & valid_day)] = None
-    month.loc[~(valid_year & valid_month & valid_day)] = None
-    day.loc[~(valid_year & valid_month & valid_day)] = None
-
-    return year, month, day
+    return np.where(valid_year & valid_month & valid_day, year, np.NaN), \
+           np.where(valid_year & valid_month & valid_day, month, np.NaN), \
+           np.where(valid_year & valid_month & valid_day, day, np.NaN)
 
 
 def get_gregorian_date_from_jalali_date(year, month, day):

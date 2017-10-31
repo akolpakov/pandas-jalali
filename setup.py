@@ -32,7 +32,7 @@ tests_require = [
 
 setup(
     name='pandas-jalali',
-    version='0.1.0',
+    version='0.1.2',
     description='Manipulate with Jalali date in pandas',
     long_description=read_md('README.md'),
     keywords='python pandas jalali calendar',
