@@ -81,3 +81,15 @@ class TestConverter(unittest.TestCase):
         self.assertTrue(y.equals(pd.Series([np.NaN, 1967])))
         self.assertTrue(m.equals(pd.Series([np.NaN, 3])))
         self.assertTrue(d.equals(pd.Series([np.NaN, 21])))
+
+    def test_doc_example(self):
+        df = pd.DataFrame([
+            [1346, 1, 1],
+            [1346, 10, 20]
+        ], columns=['year', 'month', 'day'])
+
+        df['year_gregorian'], df['month_gregorian'], df['day_gregorian'] = get_gregorian_date_from_jalali_date(df['year'], df['month'], df['day'])
+
+        self.assertTrue(df['year_gregorian'].equals(pd.Series([1967.0, 1968.0])))
+        self.assertTrue(df['month_gregorian'].equals(pd.Series([3.0, 1.0])))
+        self.assertTrue(df['day_gregorian'].equals(pd.Series([21.0, 10.0])))
