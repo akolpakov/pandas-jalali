@@ -36,9 +36,9 @@ def get_gregorian_date_from_julian_day(jd):
     m = np.where(e < 14, e - 1, np.where((e == 14) | (e == 15), e - 13, 0))
     y = np.where(m > 2, c - 4716, np.where((m == 1) | (m == 2), c - 4715, 0))
 
-    return pd.Series(np.where(pd.isna(jd), np.NaN, y)), \
-           pd.Series(np.where(pd.isna(jd), np.NaN, m)), \
-           pd.Series(np.where(pd.isna(jd), np.NaN, day))
+    return pd.Series(np.where(pd.isnull(jd), np.NaN, y)), \
+           pd.Series(np.where(pd.isnull(jd), np.NaN, m)), \
+           pd.Series(np.where(pd.isnull(jd), np.NaN, day))
 
 
 def is_jalali_leap_year(year):
